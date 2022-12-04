@@ -7,14 +7,18 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
+          "style": "none",
           "standalone": true,
           "inlineTemplate": true,
-          "inlineStyle": true,
           "skipTests": true,
           "changeDetection": "OnPush",
           "flat": true,
           "viewEncapsulation": "Emulated"
+        },
+        "@schematics/angular:directive": {
+          "standalone": true,
+          "skipTests": true,
+          "flat": true
         }
       },
       "root": "",
