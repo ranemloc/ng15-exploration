@@ -1,4 +1,5 @@
-import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {hostInject} from "../util/host-inject.util";
 
 @Directive({
   selector: '[appOutline]',
@@ -7,7 +8,7 @@ import {Directive, HostBinding, inject, Input} from '@angular/core';
 export class OutlineDirective {
 
   static set color(color: string) {
-    inject(OutlineDirective).color = color;
+    hostInject(OutlineDirective).color = color;
   }
   @Input()
   set color(color: string) {

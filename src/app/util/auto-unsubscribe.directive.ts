@@ -1,5 +1,6 @@
-import {Directive, inject, OnDestroy} from '@angular/core';
+import {Directive, OnDestroy} from '@angular/core';
 import {Observable, Observer, Subscription} from "rxjs";
+import {hostInject} from "./host-inject.util";
 
 export type AutoUnsubscribeObserver<T> = Partial<Observer<T>> | ((next: T) => void);
 @Directive({
@@ -9,7 +10,7 @@ export type AutoUnsubscribeObserver<T> = Partial<Observer<T>> | ((next: T) => vo
 export class AutoUnsubscribeDirective implements OnDestroy {
 
   static subscribe<T>(observable: Observable<T>, observer: AutoUnsubscribeObserver<T>): Subscription {
-    return inject(AutoUnsubscribeDirective).subscribe(observable, observer);
+    return hostInject(AutoUnsubscribeDirective).subscribe(observable, observer);
   }
   private readonly subscriptions = new Subscription();
 
